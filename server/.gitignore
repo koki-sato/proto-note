@@ -1,0 +1,4 @@
+.env
+dist/
+public/index.js
+node_modules/
