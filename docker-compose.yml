@@ -1,0 +1,27 @@
+version: '3'
+services:
+  node:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - mysql
+    links:
+      - mysql
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/app
+    command: nf start
+  mysql:
+    image: mysql
+    ports:
+      - 3306:3306
+    volumes:
+      - ./server/db:/docker-entrypoint-initdb.d
+      - mysql-data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: proto_note
+volumes:
+  mysql-data: {}
