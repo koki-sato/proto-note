@@ -22,6 +22,7 @@ const config = {
   resolve: {
     extensions: ['*', '.ts', '.tsx', '.js', '.jsx'],
   },
+  devtool: 'cheap-module-source-map',
   plugins: [new webpack.EnvironmentPlugin({ NODE_ENV: env })],
 }
 
