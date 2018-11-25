@@ -8,6 +8,12 @@ export const success = <T>(data: T) => ({ success: true, data, errors: [] })
 
 export const failure = (errors: string[]) => ({ success: false, data: null, errors })
 
+export const logRequest = (req: Request, _: Response, next: NextFunction) => {
+  const user = req.session && req.session.user ? `[user:${req.session.user}]` : '[anonimus]'
+  console.log(`${user} ${req.method} ${req.path}`)
+  next()
+}
+
 export const sessionCheck = (req: Request, res: Response, next: NextFunction) => {
   if (req.session && req.session.user) {
     next()

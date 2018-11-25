@@ -1,9 +1,12 @@
 import * as bodyParser from 'body-parser'
 import * as cookieParser from 'cookie-parser'
+import * as cors from 'cors'
 import * as express from 'express'
 import * as session from 'express-session'
 import * as path from 'path'
+
 import routes from './routes/api'
+import { logRequest } from './utils'
 
 const publicDir = path.join(__dirname, '../public')
 const indexPath = path.join(publicDir, 'index.html')
@@ -13,6 +16,7 @@ const app = express()
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cookieParser())
+app.use(cors())
 app.use(express.static(publicDir))
 app.use(
   session({
@@ -22,17 +26,7 @@ app.use(
     cookie: { httpOnly: true, secure: false },
   }),
 )
-
-app.use((_, res, next) => {
-  res.set(
-    'Content-Security-Policy',
-    `
-    script-src 'self';
-    style-src 'self' 'unsafe-inline';
-  `.replace(/\n/g, ''),
-  )
-  next()
-})
+app.use(logRequest)
 
 app.get('/', (_, res) => res.sendFile(indexPath))
 app.get('/login', (_, res) => res.sendFile(indexPath))

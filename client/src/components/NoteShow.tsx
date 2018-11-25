@@ -19,6 +19,7 @@ interface Props extends RouteComponentProps<{ uuid: string }>, WithStyles<Styles
 
 interface State {
   note: NoteShowResult['data'] | null
+  instance: HTMLDivElement | null
 }
 
 class NoteShow extends React.Component<Props, State> {
@@ -27,6 +28,7 @@ class NoteShow extends React.Component<Props, State> {
 
     this.state = {
       note: null,
+      instance: null,
     }
 
     if (!this.props.isLoggedIn) {
@@ -46,19 +48,40 @@ class NoteShow extends React.Component<Props, State> {
         <Typography component="h2" variant="h3" className={this.props.classes.typography}>
           {this.state.note.title}
         </Typography>
-        <div className={this.props.classes.body}>
-          <div
-            className="markdown-body"
-            dangerouslySetInnerHTML={{ __html: this.state.note.body }}
-          />
-        </div>
+        <div className={this.props.classes.body} ref={el => this.setInstance(el)} />
       </div>
     ) : null
+  }
+
+  private setInstance(instance: HTMLDivElement | null) {
+    if (!this.state.instance) {
+      this.setState({ instance })
+    }
   }
 
   private onNoteShowSuccess(data: NoteShowResult) {
     if (data.success) {
       this.setState({ note: data.data })
+      if (this.state.instance) {
+        const fragment: DocumentFragment = document.createDocumentFragment()
+
+        const mdBody = document.createElement('div')
+        mdBody.className = 'markdown-body'
+        mdBody.innerHTML = this.state.note!.body
+        fragment.appendChild(mdBody)
+
+        const scripts = mdBody.getElementsByTagName('script')
+        for (const script of Array.from(scripts)) {
+          const element = document.createElement('script')
+          element.type = 'text/javascript'
+          element.async = true
+          if (script.src) element.src = script.src
+          element.innerHTML = script.innerHTML
+          fragment.appendChild(element)
+        }
+
+        this.state.instance.appendChild(fragment)
+      }
     } else {
       this.props.createAlert({ variant: 'error', message: data.errors.join('\n') })
     }

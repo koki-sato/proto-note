@@ -1,5 +1,6 @@
 import * as express from 'express'
 import 'express-session'
+import { checkReport } from '../../admin'
 import { Note } from '../../model'
 import { NoteCreateQuery, NoteCreateResult, NoteListResult, NoteShowResult } from '../../types'
 import { clone, failure, success, uuid } from '../../utils'
@@ -30,7 +31,8 @@ router.post('/create', async (req, res) => {
     markdown: params.markdown,
     body: params.body,
   })
-    .then(_ => {
+    .then(instance => {
+      checkReport(instance.get().uuid).catch(e => console.log(e))
       const result: NoteCreateResult = success(null)
       res.json(result)
     })
@@ -41,10 +43,9 @@ router.post('/create', async (req, res) => {
 })
 
 router.get('/:uuid', async (req, res) => {
-  const user = req.session!.user
   Note.findOne({
     attributes: ['uuid', 'title', 'body'],
-    where: { uuid: req.params.uuid, user_id: user },
+    where: { uuid: req.params.uuid },
   }).then(instance => {
     if (instance) {
       const note = instance.get()

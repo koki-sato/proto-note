@@ -1,9 +1,15 @@
 #!/usr/bin/env bash
 
-set -eux
+set -eu
+
+PROTO_NOTE_ROOT=$(cd $(dirname $0) && cd .. && pwd)
+
+set -x
+
+cd $PROTO_NOTE_ROOT/server && cp -n .env.sample .env && cd -
 
 docker-compose build
-docker-compose run --rm -w '/app/admin' node yarn install
 docker-compose run --rm -w '/app/client' node yarn install
 docker-compose run --rm -w '/app/server' node yarn install
+docker-compose run --rm -w '/app/client' node yarn run build
 docker-compose run --rm -w '/app/server' node yarn run db-setup

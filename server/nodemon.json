@@ -1,5 +1,5 @@
 {
   "watch": ["src"],
   "ext": "ts",
-  "exec": "yarn run serve"
+  "exec": "yarn run start"
 }
