@@ -2,8 +2,7 @@
 node_modules/
 
 # Output directory
-dist/
-public/index.js
+public/index.js*
 
 # dotenv
 .env

@@ -1,0 +1,17 @@
+html {
+  height: 100%;
+  overflow: auto;
+}
+
+body {
+  height: 100%;
+  overflow-x: hidden;
+  margin: 0px;
+  min-width: 375px;
+}
+
+.allWrapper {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}

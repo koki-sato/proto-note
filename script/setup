@@ -6,3 +6,4 @@ docker-compose build
 docker-compose run --rm -w '/app/admin' node yarn install
 docker-compose run --rm -w '/app/client' node yarn install
 docker-compose run --rm -w '/app/server' node yarn install
+docker-compose run --rm -w '/app/server' node yarn run db-setup
