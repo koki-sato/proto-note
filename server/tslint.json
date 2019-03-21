@@ -1,13 +1,11 @@
 {
-  "extends": [
-    "tslint:latest",
-    "tslint-config-prettier"
-  ],
+  "extends": ["tslint:latest", "tslint-config-prettier"],
   "rules": {
     "array-type": [true, "array"],
     "interface-name": [true, "never-prefix"],
     "no-console": false,
     "no-else-after-return": false,
+    "no-submodule-imports": false,
     "no-var-requires": false,
     "object-literal-sort-keys": false,
     "object-shorthand-properties-first": false,

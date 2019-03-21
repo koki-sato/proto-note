@@ -2,7 +2,7 @@ const prettierConfig = {
   printWidth: 100,
   semi: false,
   singleQuote: true,
-  trailingComma: 'all'
-};
+  trailingComma: 'all',
+}
 
-module.exports = prettierConfig;
+module.exports = prettierConfig

@@ -7,7 +7,7 @@
   "scripts": {
     "build": "webpack --display-error-details",
     "format": "run-s format:*",
-    "format:prettier": "prettier --config prettier.config.js --write 'src/**/*.ts{,x}'",
+    "format:prettier": "prettier --write 'src/**/*.ts{,x}' '*.{js,json}'",
     "format:tslint": "tslint --fix -p . 'src/**/*.ts{,x}'",
     "lint": "tslint -p . 'src/**/*.ts{,x}'",
     "watch": "env NODE_ENV=development webpack --watch"

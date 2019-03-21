@@ -1,17 +1,17 @@
 {
   "compilerOptions": {
-    "alwaysStrict": true,
-    "lib": ["es2018"],
+    "target": "es2018",
     "module": "commonjs",
-    "moduleResolution": "node",
-    "noImplicitReturns": true,
+    "lib": ["es2018"],
+    "allowJs": true,
+    "checkJs": true,
+    "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "strict": true,
-    "target": "es2018",
-    "types" : ["node"],
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "moduleResolution": "node",
+    "baseUrl": "."
   },
-  "exclude": [
-    "node_modules"
-  ]
+  "exclude": ["node_modules"]
 }

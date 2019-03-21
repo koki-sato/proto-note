@@ -4,9 +4,11 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    command: nf start
+    command: yarn run watch
     depends_on:
       - mysql
+    env_file:
+      - .env
     links:
       - mysql
     ports:
