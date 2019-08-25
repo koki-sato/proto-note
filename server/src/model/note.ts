@@ -1,46 +1,63 @@
-import * as Sequelize from 'sequelize'
+import { DataTypes, Model } from 'sequelize'
 
 import { sequelize } from '../database/config'
 
-interface Attributes {
-  id?: number
-  uuid: string
-  user_id: number
-  title: string
-  markdown: string
-  body: string
+export class Note extends Model {
+  public id!: number
+  public uuid!: string
+  public userId!: number
+  public title!: string
+  public markdown!: string
+  public body!: string
+
+  public readonly createdAt!: Date
+  public readonly updatedAt!: Date
 }
 
-interface Instance extends Sequelize.Instance<Attributes> {}
-
-interface Note extends Sequelize.Model<Instance, Attributes> {}
-
-export const Note = sequelize.define<Instance, Attributes>('notes', {
-  id: {
-    type: Sequelize.INTEGER,
-    allowNull: false,
-    autoIncrement: true,
-    primaryKey: true,
+Note.init(
+  {
+    id: {
+      type: DataTypes.INTEGER.UNSIGNED,
+      allowNull: false,
+      autoIncrement: true,
+      primaryKey: true
+    },
+    uuid: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true
+    },
+    userId: {
+      type: DataTypes.INTEGER.UNSIGNED,
+      allowNull: false,
+      field: 'user_id'
+    },
+    title: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    markdown: {
+      type: DataTypes.TEXT,
+      allowNull: false
+    },
+    body: {
+      type: DataTypes.TEXT,
+      allowNull: false
+    },
+    createdAt: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      field: 'created_at'
+    },
+    updatedAt: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      field: 'updated_at'
+    }
   },
-  uuid: {
-    type: Sequelize.STRING,
-    allowNull: false,
-    unique: true,
-  },
-  user_id: {
-    type: Sequelize.INTEGER,
-    allowNull: false,
-  },
-  title: {
-    type: Sequelize.STRING,
-    allowNull: false,
-  },
-  markdown: {
-    type: Sequelize.TEXT,
-    allowNull: false,
-  },
-  body: {
-    type: Sequelize.TEXT,
-    allowNull: false,
-  },
-})
+  {
+    sequelize,
+    tableName: 'notes',
+    timestamps: true
+  }
+)

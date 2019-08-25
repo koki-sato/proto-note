@@ -8,7 +8,7 @@ const URL = '/api/register'
 export enum ActionType {
   API_REGISTER_REQUEST = 'API_REGISTER_REQUEST',
   API_REGISTER_SUCCESS = 'API_REGISTER_SUCCESS',
-  API_REGISTER_FAILURE = 'API_REGISTER_FAILURE',
+  API_REGISTER_FAILURE = 'API_REGISTER_FAILURE'
 }
 
 export interface Payload {
@@ -26,27 +26,27 @@ export const actions = {
   registerRequest: (): Action => {
     return {
       type: ActionType.API_REGISTER_REQUEST,
-      payload: {},
+      payload: {}
     }
   },
   registerSuccess: (data: RegisterResult): Action => {
     return {
       type: ActionType.API_REGISTER_SUCCESS,
-      payload: { data },
+      payload: { data }
     }
   },
   registerFailure: (error: string): Action => {
     return {
       type: ActionType.API_REGISTER_FAILURE,
-      payload: { error },
+      payload: { error }
     }
-  },
+  }
 }
 
 export const callApi = (
   query: RegisterQuery,
   onSuccess?: (data: RegisterResult) => void,
-  onFailure?: (error: string) => void,
+  onFailure?: (error: string) => void
 ) => {
   return (dispatch: Dispatch) => {
     dispatch(actions.registerRequest())
@@ -56,7 +56,7 @@ export const callApi = (
         dispatch(actions.registerSuccess(response.data))
         if (onSuccess) onSuccess(response.data)
       })
-      .catch(error => {
+      .catch((error) => {
         dispatch(actions.registerFailure(error.toString()))
         if (onFailure) onFailure(error.toString())
       })

@@ -1,20 +1,25 @@
-FROM node:8.12.0-alpine
+FROM node:10.16.3-alpine
 
 WORKDIR /app
 
-# See https://github.com/GoogleChrome/puppeteer/blob/master/docs/troubleshooting.md#running-on-alpine
+# Installs latest Chromium (76) package.
 #
-# Installs latest Chromium (68) package.
-RUN apk update && apk upgrade && \
-    echo @edge http://nl.alpinelinux.org/alpine/edge/community >> /etc/apk/repositories && \
-    echo @edge http://nl.alpinelinux.org/alpine/edge/main >> /etc/apk/repositories && \
-    apk add --no-cache chromium@edge nss@edge
+# # See https://github.com/GoogleChrome/puppeteer/blob/master/docs/troubleshooting.md#running-on-alpine
+RUN apk update && \
+    apk upgrade && \
+    apk add --no-cache \
+      chromium \
+      nss \
+      freetype \
+      freetype-dev \
+      harfbuzz \
+      ca-certificates \
+      ttf-freefont
 
 # Tell Puppeteer to skip installing Chrome. We'll be using the installed package.
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
 
-RUN npm install -g npm \
-  && npm update \
+RUN npm update \
   && npm uninstall yarn -g \
   && npm install -g yarn
 

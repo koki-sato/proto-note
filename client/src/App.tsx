@@ -3,7 +3,10 @@ import { connect } from 'react-redux'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import { bindActionCreators, Dispatch } from 'redux'
 
-import { MuiThemeProvider } from '@material-ui/core/'
+import { ThemeProvider } from '@material-ui/styles'
+
+import 'github-markdown-css/github-markdown.css'
+import 'highlight.js/styles/github.css'
 
 import { actions, Actions } from './actions'
 import Footer from './components/Footer'
@@ -33,7 +36,7 @@ class App extends React.Component<Props> {
 
   public render() {
     return (
-      <MuiThemeProvider theme={theme}>
+      <ThemeProvider theme={theme}>
         <BrowserRouter>
           <React.Fragment>
             <Header />
@@ -54,20 +57,20 @@ class App extends React.Component<Props> {
             <Footer />
           </React.Fragment>
         </BrowserRouter>
-      </MuiThemeProvider>
+      </ThemeProvider>
     )
   }
 }
 
 const mapStateToProps = (state: { app: State }) => ({
-  isInitialized: state.app.isInitialized,
+  isInitialized: state.app.isInitialized
 })
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-  sessionCheck: bindActionCreators(actions, dispatch).session,
+  sessionCheck: bindActionCreators(actions, dispatch).session
 })
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
+  mapDispatchToProps
 )(App)

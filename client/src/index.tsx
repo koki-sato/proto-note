@@ -30,6 +30,6 @@ if (app instanceof Element) {
         <App />
       </ConnectedRouter>
     </Provider>,
-    app,
+    app
   )
 }

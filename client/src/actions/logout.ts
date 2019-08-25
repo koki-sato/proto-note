@@ -8,7 +8,7 @@ const URL = '/api/logout'
 export enum ActionType {
   API_LOGOUT_REQUEST = 'API_LOGOUT_REQUEST',
   API_LOGOUT_SUCCESS = 'API_LOGOUT_SUCCESS',
-  API_LOGOUT_FAILURE = 'API_LOGOUT_FAILURE',
+  API_LOGOUT_FAILURE = 'API_LOGOUT_FAILURE'
 }
 
 export interface Payload {
@@ -26,26 +26,26 @@ export const actions = {
   logoutRequest: (): Action => {
     return {
       type: ActionType.API_LOGOUT_REQUEST,
-      payload: {},
+      payload: {}
     }
   },
   logoutSuccess: (data: LogoutResult): Action => {
     return {
       type: ActionType.API_LOGOUT_SUCCESS,
-      payload: { data },
+      payload: { data }
     }
   },
   logoutFailure: (error: string): Action => {
     return {
       type: ActionType.API_LOGOUT_FAILURE,
-      payload: { error },
+      payload: { error }
     }
-  },
+  }
 }
 
 export const callApi = (
   onSuccess?: (data: LogoutResult) => void,
-  onFailure?: (error: string) => void,
+  onFailure?: (error: string) => void
 ) => {
   return (dispatch: Dispatch) => {
     dispatch(actions.logoutRequest())
@@ -55,7 +55,7 @@ export const callApi = (
         dispatch(actions.logoutSuccess(response.data))
         if (onSuccess) onSuccess(response.data)
       })
-      .catch(error => {
+      .catch((error) => {
         dispatch(actions.logoutFailure(error.toString()))
         if (onFailure) onFailure(error.toString())
       })

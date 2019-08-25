@@ -10,7 +10,7 @@ const variantIcon = {
   success: CheckCircle,
   warning: Warning,
   error: Error,
-  info: Info,
+  info: Info
 }
 
 interface Props extends WithStyles<Styles> {
@@ -20,7 +20,7 @@ interface Props extends WithStyles<Styles> {
   onClose: () => void
 }
 
-const Alert: React.SFC<Props> = (props: Props) => {
+const Alert: React.FC<Props> = (props: Props) => {
   const Icon = variantIcon[props.variant]
 
   return (
@@ -42,7 +42,7 @@ const Alert: React.SFC<Props> = (props: Props) => {
         action={[
           <IconButton key="close" aria-label="Close" color="inherit" onClick={props.onClose}>
             <Close className={props.classes.icon} />
-          </IconButton>,
+          </IconButton>
         ]}
       />
     </Snackbar>

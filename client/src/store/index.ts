@@ -15,5 +15,5 @@ export const initialState: State = {
   isInitialized: false,
   isLoading: false,
   isLoggedIn: false,
-  isAlertOpen: false,
+  isAlertOpen: false
 }

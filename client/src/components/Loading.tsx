@@ -7,7 +7,7 @@ import { styles, Styles } from '../styles/Loading'
 
 interface Props extends WithStyles<Styles> {}
 
-const Loading: React.SFC<Props> = (props: Props) => (
+const Loading: React.FC<Props> = (props: Props) => (
   <div className={props.classes.loading}>
     <Typography component="h2" variant="h5" className={props.classes.typography}>
       Loading ...

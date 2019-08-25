@@ -1,8 +1,10 @@
 # proto-note
 
+[![CircleCI](https://circleci.com/gh/koki-sato/proto-note.svg?style=svg)](https://circleci.com/gh/koki-sato/proto-note)
+
 m1z0r3 CTF 2018 : ProtoNote (Web 200pt)
 
-## Usage
+## How to develop
 
 ### Requirements
 
@@ -29,6 +31,10 @@ $ docker-compose run --rm node yarn run <script>
 # Example
 $ docker-compose run --rm node yarn run format
 ```
+
+## How to deploy
+
+Circle CI will deploy automatically when you push to `master` branch :)
 
 ## Reference
 

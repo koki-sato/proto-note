@@ -5,24 +5,24 @@ export const styles = (theme: Theme) =>
     container: {
       width: '85%',
       maxWidth: 868,
-      marginTop: theme.spacing.unit * 8,
-      marginBottom: theme.spacing.unit * 8,
+      marginTop: theme.spacing(8),
+      marginBottom: theme.spacing(8),
       marginLeft: 'auto',
       marginRight: 'auto',
       display: 'flex',
       flexDirection: 'column',
-      alignItems: 'center',
+      alignItems: 'center'
     },
     typography: {
       color: theme.palette.common.black,
-      textAlign: 'center',
+      textAlign: 'center'
     },
     body: {
       color: 'inherit',
-      marginTop: theme.spacing.unit * 8,
+      marginTop: theme.spacing(8),
       width: '100%',
-      textDecoration: 'none',
-    },
+      textDecoration: 'none'
+    }
   })
 
 export type Styles = typeof styles

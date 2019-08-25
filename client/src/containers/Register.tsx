@@ -6,15 +6,15 @@ import Register from '../components/Register'
 import { State } from '../store'
 
 const mapStateToProps = (state: { app: State }) => ({
-  isLoggedIn: state.app.isLoggedIn,
+  isLoggedIn: state.app.isLoggedIn
 })
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
   createAlert: bindActionCreators(actions, dispatch).alertOpen,
-  handleSubmit: bindActionCreators(actions, dispatch).register,
+  handleSubmit: bindActionCreators(actions, dispatch).register
 })
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
+  mapDispatchToProps
 )(Register)

@@ -8,7 +8,7 @@ const URL = '/api/notes/create'
 export enum ActionType {
   API_NOTE_CREATE_REQUEST = 'API_NOTE_CREATE_REQUEST',
   API_NOTE_CREATE_SUCCESS = 'API_NOTE_CREATE_SUCCESS',
-  API_NOTE_CREATE_FAILURE = 'API_NOTE_CREATE_FAILURE',
+  API_NOTE_CREATE_FAILURE = 'API_NOTE_CREATE_FAILURE'
 }
 
 export interface Payload {
@@ -26,27 +26,27 @@ export const actions = {
   noteCreateRequest: (): Action => {
     return {
       type: ActionType.API_NOTE_CREATE_REQUEST,
-      payload: {},
+      payload: {}
     }
   },
   noteCreateSuccess: (data: NoteCreateResult): Action => {
     return {
       type: ActionType.API_NOTE_CREATE_SUCCESS,
-      payload: { data },
+      payload: { data }
     }
   },
   noteCreateFailure: (error: string): Action => {
     return {
       type: ActionType.API_NOTE_CREATE_FAILURE,
-      payload: { error },
+      payload: { error }
     }
-  },
+  }
 }
 
 export const callApi = (
   query: NoteCreateQuery,
   onSuccess?: (data: NoteCreateResult) => void,
-  onFailure?: (error: string) => void,
+  onFailure?: (error: string) => void
 ) => {
   return (dispatch: Dispatch) => {
     dispatch(actions.noteCreateRequest())
@@ -56,7 +56,7 @@ export const callApi = (
         dispatch(actions.noteCreateSuccess(response.data))
         if (onSuccess) onSuccess(response.data)
       })
-      .catch(error => {
+      .catch((error) => {
         dispatch(actions.noteCreateFailure(error.toString()))
         if (onFailure) onFailure(error.toString())
       })

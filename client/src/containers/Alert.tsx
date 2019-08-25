@@ -8,14 +8,14 @@ import { State } from '../store'
 const mapStateToProps = (state: { app: State }) => ({
   isOpen: state.app.isAlertOpen,
   variant: state.app.alert ? state.app.alert.variant : 'info',
-  message: state.app.alert ? state.app.alert.message : '',
+  message: state.app.alert ? state.app.alert.message : ''
 })
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-  onClose: bindActionCreators(actions, dispatch).alertClose,
+  onClose: bindActionCreators(actions, dispatch).alertClose
 })
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
+  mapDispatchToProps
 )(Alert)

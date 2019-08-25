@@ -6,15 +6,15 @@ import Login from '../components/Login'
 import { State } from '../store'
 
 const mapStateToProps = (state: { app: State }) => ({
-  isLoggedIn: state.app.isLoggedIn,
+  isLoggedIn: state.app.isLoggedIn
 })
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
   createAlert: bindActionCreators(actions, dispatch).alertOpen,
-  handleSubmit: bindActionCreators(actions, dispatch).login,
+  handleSubmit: bindActionCreators(actions, dispatch).login
 })
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
+  mapDispatchToProps
 )(Login)

@@ -8,7 +8,7 @@ const URL = '/api/session'
 export enum ActionType {
   API_SESSION_REQUEST = 'API_SESSION_REQUEST',
   API_SESSION_SUCCESS = 'API_SESSION_SUCCESS',
-  API_SESSION_FAILURE = 'API_SESSION_FAILURE',
+  API_SESSION_FAILURE = 'API_SESSION_FAILURE'
 }
 
 export interface Payload {
@@ -26,26 +26,26 @@ export const actions = {
   sessionRequest: (): Action => {
     return {
       type: ActionType.API_SESSION_REQUEST,
-      payload: {},
+      payload: {}
     }
   },
   sessionSuccess: (data: SessionResult): Action => {
     return {
       type: ActionType.API_SESSION_SUCCESS,
-      payload: { data },
+      payload: { data }
     }
   },
   sessionFailure: (error: string): Action => {
     return {
       type: ActionType.API_SESSION_FAILURE,
-      payload: { error },
+      payload: { error }
     }
-  },
+  }
 }
 
 export const callApi = (
   onSuccess?: (data: SessionResult) => void,
-  onFailure?: (error: string) => void,
+  onFailure?: (error: string) => void
 ) => {
   return (dispatch: Dispatch) => {
     dispatch(actions.sessionRequest())
@@ -55,7 +55,7 @@ export const callApi = (
         dispatch(actions.sessionSuccess(response.data))
         if (onSuccess) onSuccess(response.data)
       })
-      .catch(error => {
+      .catch((error) => {
         dispatch(actions.sessionFailure(error.toString()))
         if (onFailure) onFailure(error.toString())
       })

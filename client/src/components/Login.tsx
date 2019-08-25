@@ -8,7 +8,7 @@ import {
   Input,
   InputLabel,
   Paper,
-  Typography,
+  Typography
 } from '@material-ui/core'
 import { withStyles, WithStyles } from '@material-ui/core/styles'
 import { LockOutlined as LockIcon } from '@material-ui/icons'
@@ -35,7 +35,7 @@ class Login extends React.Component<Props, State> {
 
     this.state = {
       username: '',
-      password: '',
+      password: ''
     }
 
     if (this.props.isLoggedIn) this.props.history.replace('/')
@@ -109,22 +109,22 @@ class Login extends React.Component<Props, State> {
     this.props.handleSubmit(
       {
         name: this.state.username,
-        password: this.state.password,
+        password: this.state.password
       },
       this.onLoginSuccess,
-      this.onLoginFailure,
+      this.onLoginFailure
     )
   }
 
   private handleChangeUsername(event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>) {
     this.setState({
-      username: event.currentTarget.value,
+      username: event.currentTarget.value
     })
   }
 
   private handleChangePassword(event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>) {
     this.setState({
-      password: event.currentTarget.value,
+      password: event.currentTarget.value
     })
   }
 }

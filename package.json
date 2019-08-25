@@ -4,21 +4,29 @@
   "description": "m1z0r3 CTF 2018",
   "author": "Koki Sato",
   "license": "MIT",
+  "engines": {
+    "node": "^10.16.3",
+    "yarn": "^1.17.3"
+  },
   "scripts": {
     "_exec-in:client": "cd client &&",
     "_exec-in:server": "cd server &&",
     "build": "run-s '_exec-in:client {@}' -- yarn run build",
     "clean": "rimraf node_modules client/node_modules server/node_modules",
     "db-setup": "run-s '_exec-in:server {@}' -- yarn run db-setup",
-    "format": "run-s '_exec-in:* {@}' -- yarn run format",
+    "deploy": "pm2 deploy production",
+    "format": "run-p '_exec-in:* {@}' -- yarn run format",
     "install-all": "yarn install && run-s '_exec-in:* {@}' -- yarn install",
-    "lint": "run-s '_exec-in:* {@}' -- yarn run lint",
-    "setup": "yarn run install-all && run-s build db-setup",
+    "lint": "run-p '_exec-in:* {@}' -- yarn run lint",
+    "setup": "yarn run install-all && run-s build",
+    "setup-all": "yarn run install-all && run-s build db-setup",
     "start": "run-s '_exec-in:server {@}' -- yarn run start",
+    "test": "run-p '_exec-in:* {@}' -- yarn run test",
     "watch": "run-p '_exec-in:* {@}' -- yarn run watch"
   },
   "devDependencies": {
-    "npm-run-all": "^4.1.3",
+    "npm-run-all": "^4.1.5",
+    "pm2": "^3.5.1",
     "rimraf": "^2.6.3"
   }
 }

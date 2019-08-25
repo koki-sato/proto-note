@@ -6,7 +6,7 @@ import { styles, Styles } from '../styles/Footer'
 
 interface Props extends WithStyles<Styles> {}
 
-const Footer: React.SFC<Props> = (props: Props) => (
+const Footer: React.FC<Props> = (props: Props) => (
   <footer className={props.classes.footer}>Copyright © 2018 Koki Sato All Rights Reserved.</footer>
 )
 

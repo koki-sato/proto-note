@@ -8,6 +8,6 @@ interface Props {
   isLoggedIn: AppState['isLoggedIn']
 }
 
-const Home: React.SFC<Props> = (props: Props) => (props.isLoggedIn ? <NoteList /> : <Title />)
+const Home: React.FC<Props> = (props: Props) => (props.isLoggedIn ? <NoteList /> : <Title />)
 
 export default Home

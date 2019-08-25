@@ -15,7 +15,7 @@ const reduceReducers = <S>(reducers: Reducer<S, any>[]) =>
   reducers.reduce<Reducer<S, any>>(
     (previousValue, currentValue) => (state, action) =>
       currentValue(previousValue(state, action), action),
-    (state, _) => state as S,
+    (state, _) => state as S
   )
 
 const reducer = reduceReducers([
@@ -26,11 +26,11 @@ const reducer = reduceReducers([
   noteCreateReducer,
   noteListReducer,
   noteShowReducer,
-  sessionReducer,
+  sessionReducer
 ])
 
 export default (history: History) =>
   combineReducers({
     router: connectRouter(history),
-    app: reducer,
+    app: reducer
   })

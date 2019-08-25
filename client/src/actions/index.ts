@@ -15,7 +15,7 @@ export const ActionType = {
   ...login.ActionType,
   ...logout.ActionType,
   ...register.ActionType,
-  ...session.ActionType,
+  ...session.ActionType
 }
 
 export type ActionType = keyof typeof ActionType
@@ -40,7 +40,7 @@ export const actions = {
   login: login.callApi,
   logout: logout.callApi,
   register: register.callApi,
-  session: session.callApi,
+  session: session.callApi
 }
 
 export type Actions = typeof actions

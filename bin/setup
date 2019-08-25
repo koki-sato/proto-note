@@ -5,7 +5,7 @@ PROTO_NOTE_ROOT=$(cd $(dirname $0) && cd .. && pwd)
 
 set -x
 
-cp -n .env.sample .env
+cp -n .env.sample .env || true
 
 docker-compose build
-docker-compose run --rm node yarn setup
+docker-compose run --rm node yarn setup-all

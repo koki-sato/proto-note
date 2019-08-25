@@ -5,7 +5,7 @@ import * as express from 'express'
 import * as session from 'express-session'
 import * as path from 'path'
 
-import routes from './routes/api'
+import api from './routes/api'
 import { logRequest } from './utils'
 
 const publicDir = path.join(__dirname, '../public')
@@ -23,8 +23,8 @@ app.use(
     secret: process.env.SESSION_SECRET as string,
     resave: false,
     saveUninitialized: true,
-    cookie: { httpOnly: true, secure: false },
-  }),
+    cookie: { httpOnly: true, secure: false }
+  })
 )
 app.use(logRequest)
 
@@ -35,6 +35,6 @@ app.get('/notes', (_, res) => res.sendFile(indexPath))
 app.get('/notes/new', (_, res) => res.sendFile(indexPath))
 app.get('/notes/:uuid', (_, res) => res.sendFile(indexPath))
 
-app.use('/api', routes)
+app.use('/api', api)
 
 app.listen(3000, () => console.log('Example app listening on port 3000!'))

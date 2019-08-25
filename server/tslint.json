@@ -1,5 +1,5 @@
 {
-  "extends": ["tslint:latest", "tslint-config-prettier"],
+  "extends": ["tslint:latest", "tslint-config-airbnb", "tslint-config-prettier"],
   "rules": {
     "array-type": [true, "array"],
     "interface-name": [true, "never-prefix"],
@@ -10,5 +10,8 @@
     "object-literal-sort-keys": false,
     "object-shorthand-properties-first": false,
     "variable-name": [true, "ban-keywords", "check-format", "allow-pascal-case"]
+  },
+  "linterOptions": {
+    "exclude": ["node_modules/**/*.ts"]
   }
 }

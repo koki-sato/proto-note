@@ -7,9 +7,9 @@ export const checkReport = async (uuid: string) => {
   puppeteer
     .launch({
       executablePath: '/usr/bin/chromium-browser',
-      args: ['--no-sandbox'],
+      args: ['--no-sandbox']
     })
-    .then(async browser => {
+    .then(async (browser) => {
       console.log(`Admin: see ${path.join(URL, 'notes', uuid)}`)
 
       const page = await browser.newPage()

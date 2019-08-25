@@ -16,7 +16,7 @@ interface Props extends RouteComponentProps, WithStyles<Styles> {
   onClickLogout: Actions['logout']
 }
 
-const Header: React.SFC<Props> = (props: Props) => {
+const Header: React.FC<Props> = (props: Props) => {
   const onLogoutSuccess = () => {
     props.history.push('/login')
     props.createAlert({ variant: 'success', message: 'Logout succeeded' })

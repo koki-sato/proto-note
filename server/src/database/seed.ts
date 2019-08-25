@@ -7,17 +7,17 @@ export const seed = () =>
     .then(() =>
       User.create({
         name: 'admin',
-        password: hashPassword(process.env.ADMIN_PASSWORD as string),
-      }),
+        password: hashPassword(process.env.ADMIN_PASSWORD as string)
+      })
     )
-    .then(user =>
+    .then((user) =>
       Note.create({
         uuid: uuid(),
-        user_id: user.get().id as number,
+        userId: user.id,
         title: 'FLAG1',
         markdown: process.env.FLAG1 as string,
-        body: process.env.FLAG1 as string,
-      }),
+        body: process.env.FLAG1 as string
+      })
     )
     .then(() => {
       console.log('Finished!')

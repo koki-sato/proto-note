@@ -1,29 +1,32 @@
-const webpack = require('webpack')
 const path = require('path')
 
 const env = process.env.NODE_ENV || 'production'
 
-const config = {
-  mode: env,
+module.exports = {
+  mode: env === 'production' ? 'production' : 'development',
   entry: './src/index.tsx',
   output: {
     path: path.join(__dirname, '../server/public'),
-    filename: 'index.js',
+    filename: 'index.js'
   },
   module: {
     rules: [
       {
         test: /\.tsx?$/,
         exclude: /node_modules/,
-        use: ['ts-loader'],
+        use: ['ts-loader']
       },
-    ],
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
+      }
+    ]
   },
   resolve: {
-    extensions: ['*', '.ts', '.tsx', '.js', '.jsx'],
-  },
-  devtool: 'cheap-module-source-map',
-  plugins: [new webpack.EnvironmentPlugin({ NODE_ENV: env })],
+    extensions: ['.js', '.jsx', '.ts', '.tsx']
+  }
 }
 
-module.exports = config
+if (env !== 'production') {
+  module.exports.devtool = 'inline-source-map'
+}

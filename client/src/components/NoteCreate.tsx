@@ -14,7 +14,7 @@ import { NoteCreateResult } from '../types'
 marked.setOptions({
   highlight: (code: string, lang: string = 'plaintext') =>
     hljs.getLanguage(lang) ? hljs.highlight(lang, code).value : code,
-  sanitize: true,
+  sanitize: true
 })
 
 interface Props extends RouteComponentProps, WithStyles<Styles> {
@@ -36,7 +36,7 @@ class NoteCreate extends React.Component<Props, State> {
     this.state = {
       title: '',
       markdown: '',
-      body: '',
+      body: ''
     }
 
     if (!this.props.isLoggedIn) {
@@ -109,23 +109,23 @@ class NoteCreate extends React.Component<Props, State> {
       {
         title: this.state.title,
         markdown: this.state.markdown,
-        body: this.state.body,
+        body: this.state.body
       },
       this.onNoteCreateSuccess,
-      this.onNoteCreateFailure,
+      this.onNoteCreateFailure
     )
   }
 
   private handleChamgeTitle(event: React.ChangeEvent<HTMLInputElement>) {
     this.setState({
-      title: event.currentTarget.value,
+      title: event.currentTarget.value
     })
   }
 
   private handleChamgeMarkdown(event: React.ChangeEvent<HTMLInputElement>) {
     this.setState({
       markdown: event.currentTarget.value,
-      body: marked(event.currentTarget.value),
+      body: marked(event.currentTarget.value)
     })
   }
 }

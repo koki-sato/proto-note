@@ -1,0 +1,33 @@
+# JavaScript CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-javascript/ for more details
+#
+version: 2.1
+
+jobs:
+  test:
+    docker:
+      - image: circleci/node:10.16
+    steps:
+      - checkout
+      - run: yarn install-all
+      - run: yarn test
+  # deploy:
+  #   docker:
+  #     - image: circleci/node:10.16
+  #   steps:
+  #     - checkout
+  #     - run: yarn install-all
+  #     - run: yarn deploy
+
+workflows:
+  version: 2
+  test-and-deploy:
+    jobs:
+      - test
+      # - deploy:
+      #     requires:
+      #       - test
+      #     filters:
+      #       branches:
+      #         only: master

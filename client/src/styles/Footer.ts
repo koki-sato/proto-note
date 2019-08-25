@@ -11,12 +11,12 @@ export const styles = (theme: Theme) =>
       marginTop: 'auto',
       marginLeft: 'auto',
       marginRight: 'auto',
-      paddingTop: theme.spacing.unit * 5,
-      paddingBottom: theme.spacing.unit * 10,
+      paddingTop: theme.spacing(5),
+      paddingBottom: theme.spacing(10),
       paddingLeft: '4%',
       paddingRight: '4%',
-      borderTop: 'solid #eee 1px',
-    },
+      borderTop: 'solid #eee 1px'
+    }
   })
 
 export type Styles = typeof styles

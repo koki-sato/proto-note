@@ -8,7 +8,7 @@ const URL = '/api/notes'
 export enum ActionType {
   API_NOTE_LIST_REQUEST = 'API_NOTE_LIST_REQUEST',
   API_NOTE_LIST_SUCCESS = 'API_NOTE_LIST_SUCCESS',
-  API_NOTE_LIST_FAILURE = 'API_NOTE_LIST_FAILURE',
+  API_NOTE_LIST_FAILURE = 'API_NOTE_LIST_FAILURE'
 }
 
 export interface Payload {
@@ -26,26 +26,26 @@ export const actions = {
   noteListRequest: (): Action => {
     return {
       type: ActionType.API_NOTE_LIST_REQUEST,
-      payload: {},
+      payload: {}
     }
   },
   noteListSuccess: (data: NoteListResult): Action => {
     return {
       type: ActionType.API_NOTE_LIST_SUCCESS,
-      payload: { data },
+      payload: { data }
     }
   },
   noteListFailure: (error: string): Action => {
     return {
       type: ActionType.API_NOTE_LIST_FAILURE,
-      payload: { error },
+      payload: { error }
     }
-  },
+  }
 }
 
 export const callApi = (
   onSuccess?: (data: NoteListResult) => void,
-  onFailure?: (error: string) => void,
+  onFailure?: (error: string) => void
 ) => {
   return (dispatch: Dispatch) => {
     dispatch(actions.noteListRequest())
@@ -55,7 +55,7 @@ export const callApi = (
         dispatch(actions.noteListSuccess(response.data))
         if (onSuccess) onSuccess(response.data)
       })
-      .catch(error => {
+      .catch((error) => {
         dispatch(actions.noteListFailure(error.toString()))
         if (onFailure) onFailure(error.toString())
       })

@@ -27,7 +27,7 @@ class NoteList extends React.Component<Props, State> {
     super(props)
 
     this.state = {
-      notes: [],
+      notes: []
     }
 
     if (!this.props.isLoggedIn) {

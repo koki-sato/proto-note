@@ -4,26 +4,26 @@ import { amber, green } from '@material-ui/core/colors'
 export const styles = (theme: Theme) =>
   createStyles({
     success: {
-      backgroundColor: green[600],
+      backgroundColor: green[600]
     },
     error: {
-      backgroundColor: theme.palette.error.dark,
+      backgroundColor: theme.palette.error.dark
     },
     info: {
-      backgroundColor: theme.palette.primary.dark,
+      backgroundColor: theme.palette.primary.dark
     },
     warning: {
-      backgroundColor: amber[700],
+      backgroundColor: amber[700]
     },
     icon: {
       fontSize: 20,
       opacity: 0.9,
-      marginRight: theme.spacing.unit,
+      marginRight: theme.spacing(1)
     },
     message: {
       display: 'flex',
-      alignItems: 'center',
-    },
+      alignItems: 'center'
+    }
   })
 
 export type Styles = typeof styles

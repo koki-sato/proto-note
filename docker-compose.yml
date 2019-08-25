@@ -1,4 +1,5 @@
 version: '3'
+
 services:
   node:
     build:
@@ -15,9 +16,9 @@ services:
       - 3000:3000
     volumes:
       - .:/app
+
   mysql:
     image: mysql:5.7
-    command: mysqld --character-set-server=utf8
     environment:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: proto_note
@@ -25,5 +26,6 @@ services:
       - 3306:3306
     volumes:
       - mysql-data:/var/lib/mysql
+
 volumes:
   mysql-data: {}

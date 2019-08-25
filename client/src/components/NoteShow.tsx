@@ -28,7 +28,7 @@ class NoteShow extends React.Component<Props, State> {
 
     this.state = {
       note: null,
-      instance: null,
+      instance: null
     }
 
     if (!this.props.isLoggedIn) {
@@ -48,7 +48,7 @@ class NoteShow extends React.Component<Props, State> {
         <Typography component="h2" variant="h3" className={this.props.classes.typography}>
           {this.state.note.title}
         </Typography>
-        <div className={this.props.classes.body} ref={el => this.setInstance(el)} />
+        <div className={this.props.classes.body} ref={(el) => this.setInstance(el)} />
       </div>
     ) : null
   }

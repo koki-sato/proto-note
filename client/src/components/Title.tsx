@@ -7,7 +7,7 @@ import { styles, Styles } from '../styles/Title'
 
 interface Props extends WithStyles<Styles> {}
 
-const Title: React.SFC<Props> = (props: Props) => (
+const Title: React.FC<Props> = (props: Props) => (
   <div className={props.classes.title}>
     <Typography variant="h2" className={props.classes.typography}>
       Welcome to <span className={props.classes.blue}>Proto</span> Note

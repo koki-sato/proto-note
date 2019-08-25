@@ -2,7 +2,7 @@ import { Alert } from '../store'
 
 export enum ActionType {
   ALERT_CLOSE = 'ALERT_CLOSE',
-  ALERT_OPEN = 'ALERT_OPEN',
+  ALERT_OPEN = 'ALERT_OPEN'
 }
 
 export interface Payload {
@@ -20,13 +20,13 @@ export const actions = {
   close: (): Action => {
     return {
       type: ActionType.ALERT_CLOSE,
-      payload: {},
+      payload: {}
     }
   },
   open: (alert: Alert): Action => {
     return {
       type: ActionType.ALERT_OPEN,
-      payload: { data: alert },
+      payload: { data: alert }
     }
-  },
+  }
 }

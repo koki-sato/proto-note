@@ -7,15 +7,15 @@ import { State } from '../store'
 
 const mapStateToProps = (state: { app: State }) => ({
   isLoading: state.app.isLoading,
-  isLoggedIn: state.app.isLoggedIn,
+  isLoggedIn: state.app.isLoggedIn
 })
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
   createAlert: bindActionCreators(actions, dispatch).alertOpen,
-  getNotes: bindActionCreators(actions, dispatch).noteList,
+  getNotes: bindActionCreators(actions, dispatch).noteList
 })
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
+  mapDispatchToProps
 )(NoteList)
